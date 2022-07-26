@@ -37,17 +37,20 @@ body{
 }
 
 .card-container{
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .card-container:hover{
     
-    background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12) !important;
+    /* background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12) !important; */
+    background: linear-gradient(90deg, rgba(0,182,255,1) 0%, rgba(167,0,255,1) 100%) !important
 }
 
 .hero{
-    background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    /* background-image: linear-gradient(to right bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
+    background-image: url('./assets/bg.svg');
 }
 
 .about-main{
@@ -63,6 +66,8 @@ body{
 img{
     -webkit-user-drag: none;
 }
+
+
 
 ::-webkit-scrollbar{
     width: 10px;
@@ -132,3 +137,4 @@ img{
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5)
 }
+

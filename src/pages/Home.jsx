@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {AiOutlineMenu, AiOutlineGithub} from 'react-icons/ai'
 import {FaLongArrowAltRight, FaDiscord} from 'react-icons/fa'
-import {Link} from 'react-scroll'
+import {Link as LinkS} from 'react-scroll'
+import {Link} from 'react-router-dom'
 import HTML from '../assets/html.png'
 import CSS from '../assets/css.png'
 import Firebase from '../assets/firebase.png'
@@ -26,6 +27,7 @@ const Home = () => {
   const [from_name, setFromName] = useState()
   const [email, setEmail] = useState()
   const [message, setMessage] = useState()
+  const [navbar, setNavbar] = useState(false)
 
   const content = {
     from_name,
@@ -44,6 +46,15 @@ const Home = () => {
     e.target.reset()
   }
 
+  // const changeNav = () => {
+  //   if (window.scrollY >= 80)  {
+  //     setNavbar(true)
+  //   } else 
+  //   setNavbar(false)
+  // }
+
+  // window.addEventListener('scroll', changeNav)
+
 
 
   return (
@@ -51,37 +62,37 @@ const Home = () => {
 
         {/* NAVBAR SECTION */}
         <div className='fixed w-full h-20'>
-          <div className={`header flex justify-between items-center pt-12 duration-500 z-50`}>
-          <div className='mx-12 md:mx-32 font-bold text-white logo text-2xl md:text-4xl z-50'>
+          <div className={`header flex justify-between items-center pt-6 duration-500 z-50 ${navbar ? 'active pt-0 h-20 relative' : ''}`}>
+          <div className='mx-8 font-bold text-white logo text-2xl md:text-4xl z-50'>
                 PWIDE.HU
             </div>
 
-            <ul className={`cursor-pointer mx-32 hidden lg:flex items-center space-x-8 font-medium text-xl md:text-2xl navbar text-white z-50`}>
-                <Link to='home' smooth={true} duration={500}>Home</Link>
-                <Link to='skills' smooth={true} duration={500}>Skills</Link>
-                <Link to='work' smooth={true} duration={500}>Work</Link>
-                <Link to='contact' smooth={true} duration={500}><button className='rounded-full px-8 bg-transparent h-12 text-white text-lg font-bold border-2 hover:bg-white hover:text-black duration-300'>Connect</button></Link>
+            <ul className={`cursor-pointer mx-8 hidden lg:flex items-center space-x-8 font-medium text-xl md:text-2xl navbar text-white z-50`}>
+                <LinkS to='home' smooth={true} duration={500}>Home</LinkS>
+                <LinkS to='skills' smooth={true} duration={500}>Skills</LinkS>
+                <LinkS to='work' smooth={true} duration={500}>Work</LinkS>
+                <LinkS to='contact' smooth={true} duration={500}><button className='rounded-full px-8 bg-transparent h-12 text-white text-lg font-bold border-2 hover:bg-white hover:text-black duration-300'>Connect</button></LinkS>
             </ul>
            
             <AiOutlineMenu className='block lg:hidden text-white mx-12 rounded-lg' size={40}/>
           </div>
 
         </div>
-
+ 
         {/* HERO SECTION */}
         <div className='w-full md:h-screen bg-[#121212] flex flex-col justify-center  hero' name='home'>
-            <div className='mx-12 md:mx-32 max-w-[960px] flex hero-text text-white'>
+            <div className='mx-12 md:mx-64 max-w-[960px] flex hero-text text-white'>
               <div className=''>
                 <h1 className='text-5xl md:text-8xl font-bold'>Hi! I'm PWIDE</h1>
                 
                 <h1 className='font-bold text-4xl md:text-6xl my-2'>Web Developer</h1>
                 <p className='font-bold text-xl md:text-2xl text-gray-300 my-2'>I'm a freelance full stack web developer. I build web applications and create websites for customers based on their designs.</p>
 
-                <Link to='contact' smooth={true} duration={500}><button className='mt-8 text-2xl text-white flex items-center px-8  relative work-button  h-20 md:h-16 '>Connect <FaLongArrowAltRight className='ml-3' /></button></Link>
+                <LinkS to='contact' smooth={true} duration={500} className='mt-8 text-2xl text-white flex items-center w-48 px-8 relative work-button  h-20 md:h-16 z-10'>Connect <FaLongArrowAltRight className='ml-3' /></LinkS>
 
                 <div className='w-28 flex cursor-pointer justify-between items-center icons my-16 md:my-32'>
-                  <AiOutlineGithub className='text-white  hover:scale-125 duration-300' size={40}/>
-                  <FaDiscord className='text-white  hover:scale-125 duration-300' size={40}/>
+                  <a href='https://github.com/pW1de' target={"_blank"}> <AiOutlineGithub className='text-white  hover:scale-125 duration-300' size={40}/></a>
+                  <a href='https://discord.gg/DMpEt6z68k' target={"_blank"}><FaDiscord className='text-white  hover:scale-125 duration-300' size={40}/></a>
                 </div>
               </div>
 
@@ -267,7 +278,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG2})`}}>
+                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG})`}}>
                     <div className='opacity-0 group-hover:opacity-100'>
                       <p className='text-xl md:text-3xl text-center my-8 font-bold'>Lorem ipsum dolor sit amet.</p>
                       <div className='flex justify-center items-center space-x-4 py-12'>
@@ -276,7 +287,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG3})`}}>
+                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG})`}}>
                     <div className='opacity-0 group-hover:opacity-100'>
                       <p className='text-xl md:text-3xl text-center my-8 font-bold'>Lorem ipsum dolor sit amet.</p>
                       <div className='flex justify-center items-center space-x-4 py-12'>
@@ -285,7 +296,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG4})`}}>
+                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG})`}}>
                     <div className='opacity-0 group-hover:opacity-100'>
                       <p className='text-xl md:text-3xl text-center my-8 font-bold'>Lorem ipsum dolor sit amet.</p>
                       <div className='flex justify-center items-center space-x-4 py-12'>
@@ -294,7 +305,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG5})`}}>
+                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG})`}}>
                     <div className='opacity-0 group-hover:opacity-100'>
                       <p className='text-xl md:text-3xl text-center my-8 font-bold'>Lorem ipsum dolor sit amet.</p>
                       <div className='flex justify-center items-center space-x-4 py-12'>
@@ -303,7 +314,7 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG6})`}}>
+                  <div className='group mx-auto w-full card-container rounded-lg duration-500 h-[300px] hover:scale-110' style={{backgroundImage: `url(${CardBG})`}}>
                     <div className='opacity-0 group-hover:opacity-100'>
                       <p className='text-xl md:text-3xl text-center my-8 font-bold'>Lorem ipsum dolor sit amet.</p>
                       <div className='flex justify-center items-center space-x-4 py-12'>
@@ -341,7 +352,13 @@ const Home = () => {
                             <textarea className='mt-4 rounded-2xl text-md md:text-xl pl-8 py-4 outline-none'placeholder='Message' onChange={(e) => setMessage(e.target.value)} rows={10}></textarea>
                             
                           </div>
+                          <div className='flex space-x-4'>
                           <button className='bg-white hover:scale-110 duration-500 rounded-lg text-2xl md:text-3xl font-bold py-4 px-12 mt-8'>Send</button>
+                            <div className='flex space-x-4 mt-12'>
+                              <a href='https://github.com/pW1de' target={"_blank"}> <AiOutlineGithub className='text-white  hover:scale-125 duration-300' size={40}/></a>
+                              <a href='https://discord.gg/DMpEt6z68k' target={"_blank"}><FaDiscord className='text-white  hover:scale-125 duration-300' size={40}/></a>
+                            </div>
+                          </div>
                         </form>
                     </div>
                 </div>
